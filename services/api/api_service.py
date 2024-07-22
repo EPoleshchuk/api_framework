@@ -1,8 +1,5 @@
-# genre
-# movie
-# reviews
-from helpers.api.genre_helper import GenreHelper
-from helpers.api.movie_helper import MovieHelper
+from services.api.helpers.genre_helper import GenreHelper
+from services.api.helpers.movie_helper import MovieHelper
 from services.api.models.genre.create_genre_dto import CreateGenreDto
 from services.api.models.genre.genre_response import GenreResponse
 from services.api.models.movies.create_movie_dto import CreateMovieDto
@@ -24,5 +21,10 @@ class ApiService:
     def post_movie(self, create_movie: CreateMovieDto):
         response = self.movie_helper.post_movie(create_movie.model_dump(by_alias=True,
                                                                         exclude_defaults=True))
-        print(response.json())
         return MovieResponse(**response.json())
+
+    def post_genre_and_movie(self):
+        raise NotImplementedError
+
+    def post_random_genre(self):
+        raise NotImplementedError
